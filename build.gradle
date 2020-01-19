@@ -1,0 +1,39 @@
+plugins {
+    id 'antlr'
+    id 'java'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir './'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    antlr "org.antlr:antlr4:4.7.1"
+    compile "org.antlr:antlr4:4.7.1"
+}
+
+generateGrammarSource {
+    outputDirectory = new File("src/main/java/com/tropicalbastos/brolang/ast")
+    arguments += ["-package", "com.tropicalbastos.brolang.ast"]
+}
+
+jar {
+  manifest {
+    attributes(
+    //   'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+      'Main-Class': 'com.tropicalbastos.brolang.Main'
+    )
+  }
+
+  from {
+    configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+  }   
+}

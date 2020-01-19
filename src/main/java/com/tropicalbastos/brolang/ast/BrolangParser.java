@@ -247,6 +247,7 @@ public class BrolangParser extends Parser {
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
+		public TerminalNode NEXT_STATEMENT() { return getToken(BrolangParser.NEXT_STATEMENT, 0); }
 		public AssignStmtContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -275,6 +276,8 @@ public class BrolangParser extends Parser {
 			match(IS);
 			setState(37);
 			expr();
+			setState(38);
+			match(NEXT_STATEMENT);
 			}
 		}
 		catch (RecognitionException re) {
@@ -318,15 +321,15 @@ public class BrolangParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(39);
-			match(IF);
 			setState(40);
-			expr();
+			match(IF);
 			setState(41);
-			match(EQUALS);
-			setState(42);
 			expr();
+			setState(42);
+			match(EQUALS);
 			setState(43);
+			expr();
+			setState(44);
 			match(BLOCK_OPEN);
 			}
 		}
@@ -363,7 +366,7 @@ public class BrolangParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(45);
+			setState(46);
 			match(ELSE);
 			}
 		}
@@ -401,9 +404,9 @@ public class BrolangParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(47);
-			match(ELSE);
 			setState(48);
+			match(ELSE);
+			setState(49);
 			match(IF);
 			}
 		}
@@ -444,11 +447,11 @@ public class BrolangParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(50);
-			match(SAY);
 			setState(51);
-			expr();
+			match(SAY);
 			setState(52);
+			expr();
+			setState(53);
 			match(NEXT_STATEMENT);
 			}
 		}
@@ -489,7 +492,7 @@ public class BrolangParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(54);
+			setState(55);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INT) | (1L << STRING) | (1L << FLOAT) | (1L << ID))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -534,7 +537,7 @@ public class BrolangParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(56);
+			setState(57);
 			match(BLOCK_CLOSE);
 			}
 		}
@@ -571,7 +574,7 @@ public class BrolangParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(58);
+			setState(59);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -595,22 +598,22 @@ public class BrolangParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\25?\4\2\t\2\4\3\t"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\25@\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\3"+
 		"\2\7\2\30\n\2\f\2\16\2\33\13\2\3\3\3\3\3\3\3\3\3\3\3\3\5\3#\n\3\3\4\3"+
-		"\4\3\4\3\4\3\4\3\5\3\5\3\5\3\5\3\5\3\5\3\6\3\6\3\7\3\7\3\7\3\b\3\b\3\b"+
-		"\3\b\3\t\3\t\3\n\3\n\3\13\3\13\3\13\2\2\f\2\4\6\b\n\f\16\20\22\24\2\4"+
-		"\4\2\13\r\23\23\3\2\3\5\2:\2\31\3\2\2\2\4\"\3\2\2\2\6$\3\2\2\2\b)\3\2"+
-		"\2\2\n/\3\2\2\2\f\61\3\2\2\2\16\64\3\2\2\2\208\3\2\2\2\22:\3\2\2\2\24"+
-		"<\3\2\2\2\26\30\5\4\3\2\27\26\3\2\2\2\30\33\3\2\2\2\31\27\3\2\2\2\31\32"+
-		"\3\2\2\2\32\3\3\2\2\2\33\31\3\2\2\2\34#\5\6\4\2\35#\5\16\b\2\36#\5\b\5"+
-		"\2\37#\5\n\6\2 #\5\f\7\2!#\5\22\n\2\"\34\3\2\2\2\"\35\3\2\2\2\"\36\3\2"+
-		"\2\2\"\37\3\2\2\2\" \3\2\2\2\"!\3\2\2\2#\5\3\2\2\2$%\5\24\13\2%&\7\23"+
-		"\2\2&\'\7\21\2\2\'(\5\20\t\2(\7\3\2\2\2)*\7\16\2\2*+\5\20\t\2+,\7\17\2"+
-		"\2,-\5\20\t\2-.\7\6\2\2.\t\3\2\2\2/\60\7\22\2\2\60\13\3\2\2\2\61\62\7"+
-		"\22\2\2\62\63\7\16\2\2\63\r\3\2\2\2\64\65\7\b\2\2\65\66\5\20\t\2\66\67"+
-		"\7\24\2\2\67\17\3\2\2\289\t\2\2\29\21\3\2\2\2:;\7\7\2\2;\23\3\2\2\2<="+
-		"\t\3\2\2=\25\3\2\2\2\4\31\"";
+		"\4\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\5\3\5\3\5\3\6\3\6\3\7\3\7\3\7\3\b\3\b"+
+		"\3\b\3\b\3\t\3\t\3\n\3\n\3\13\3\13\3\13\2\2\f\2\4\6\b\n\f\16\20\22\24"+
+		"\2\4\4\2\13\r\23\23\3\2\3\5\2;\2\31\3\2\2\2\4\"\3\2\2\2\6$\3\2\2\2\b*"+
+		"\3\2\2\2\n\60\3\2\2\2\f\62\3\2\2\2\16\65\3\2\2\2\209\3\2\2\2\22;\3\2\2"+
+		"\2\24=\3\2\2\2\26\30\5\4\3\2\27\26\3\2\2\2\30\33\3\2\2\2\31\27\3\2\2\2"+
+		"\31\32\3\2\2\2\32\3\3\2\2\2\33\31\3\2\2\2\34#\5\6\4\2\35#\5\16\b\2\36"+
+		"#\5\b\5\2\37#\5\n\6\2 #\5\f\7\2!#\5\22\n\2\"\34\3\2\2\2\"\35\3\2\2\2\""+
+		"\36\3\2\2\2\"\37\3\2\2\2\" \3\2\2\2\"!\3\2\2\2#\5\3\2\2\2$%\5\24\13\2"+
+		"%&\7\23\2\2&\'\7\21\2\2\'(\5\20\t\2()\7\24\2\2)\7\3\2\2\2*+\7\16\2\2+"+
+		",\5\20\t\2,-\7\17\2\2-.\5\20\t\2./\7\6\2\2/\t\3\2\2\2\60\61\7\22\2\2\61"+
+		"\13\3\2\2\2\62\63\7\22\2\2\63\64\7\16\2\2\64\r\3\2\2\2\65\66\7\b\2\2\66"+
+		"\67\5\20\t\2\678\7\24\2\28\17\3\2\2\29:\t\2\2\2:\21\3\2\2\2;<\7\7\2\2"+
+		"<\23\3\2\2\2=>\t\3\2\2>\25\3\2\2\2\4\31\"";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

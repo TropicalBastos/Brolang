@@ -11,11 +11,17 @@ import java.io.IOException;
 
 import com.tropicalbastos.brolang.ast.*;
 import com.tropicalbastos.brolang.listener.*;
+import com.tropicalbastos.brolang.compiler.*;
 
 public class Main {
 
     public static void main(String[] args) {
+        if (args.length != 2) {
+            System.err.println("Usage bcc [source file] [output file]");
+        }
+
         String fileName = args[0];
+        String outFile = args[1];
         String sourceCode = "";
 
         try {
@@ -24,6 +30,8 @@ public class Main {
             while (fileStream.available() > 0) {
                 sourceCode += (char) fileStream.read();
             }
+
+            fileStream.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.exit(-1);
@@ -38,7 +46,10 @@ public class Main {
 
         ParseTreeWalker walker = new ParseTreeWalker();
         walker.walk(listener, tree);
-        System.out.println(listener.getOutput());
+
+        String codeSource = listener.getOutput();
+        BrolangCompiler compiler = new BrolangCompiler(codeSource);
+        compiler.compile(outFile);
     }
 
 }

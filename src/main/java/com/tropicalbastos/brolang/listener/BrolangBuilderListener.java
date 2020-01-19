@@ -12,7 +12,8 @@ public class BrolangBuilderListener extends BrolangBaseListener {
     private BrolangContext brolangContext;
 
     public BrolangBuilderListener() {
-        output = "int main (int argc, char** argv) {\n";
+        output = "#include <stdio.h>\n";
+        output += "int main (int argc, char** argv) {\n";
         brolangContext = BrolangContext.DEFAULT;
     }
 
@@ -30,12 +31,36 @@ public class BrolangBuilderListener extends BrolangBaseListener {
 
 	public void exitStmt(BrolangParser.StmtContext ctx){}
 
-	public void enterAssignStmt(BrolangParser.AssignStmtContext ctx){}
+	public void enterAssignStmt(BrolangParser.AssignStmtContext ctx){
+        brolangContext = BrolangContext.ASSIGNMENT_CONTEXT;
+        List<ParseTree> tree = ctx.children;
+        String type = tree.get(0).getText();
+
+        switch (type) {
+            case "brint":
+                output += "int ";
+                break;
+            case "bring":
+                output += "char* ";
+                break;
+            case "broat":
+                output += "float ";
+                break;
+        }
+
+        output += tree.get(1).getText(); //identifier
+        output += " = ";
+        output += tree.get(3).getText(); //expression
+        output += ";\n";
+    }
 
 	public void exitAssignStmt(BrolangParser.AssignStmtContext ctx){}
 
 	public void enterExpr(BrolangParser.ExprContext ctx){
-        if (brolangContext != BrolangContext.IF_CONTEXT)
+        if (
+            brolangContext != BrolangContext.IF_CONTEXT &&
+            brolangContext != BrolangContext.ASSIGNMENT_CONTEXT
+        )
             output += ctx.children.get(0).getText();
     }
 

@@ -12,7 +12,7 @@ stmt:
     | endscope
 ;
 
-assignStmt: typeSpecifier ID IS expr;
+assignStmt: typeSpecifier ID IS expr NEXT_STATEMENT;
 ifcondition: IF expr EQUALS expr BLOCK_OPEN;
 elsecondition: ELSE;
 elseifcondition: ELSE IF;

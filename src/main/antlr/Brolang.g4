@@ -12,12 +12,18 @@ stmt:
     | endscope
 ;
 
-assignStmt: typeSpecifier ID IS expr NEXT_STATEMENT;
-ifcondition: IF expr EQUALS expr BLOCK_OPEN;
+assignStmt: typeSpecifier ID IS variableexpr NEXT_STATEMENT;
 elsecondition: ELSE;
-elseifcondition: ELSE IF;
-printstmt: SAY expr NEXT_STATEMENT;
-expr: (ID | INT | STRING | FLOAT);
+elseifcondition: ELSE ifcondition;
+ifcondition: IF variableexpr EQUALS variableexpr BLOCK_OPEN;
+printstmt: SAY variableexpr NEXT_STATEMENT;
+expr: variableexpr;
+
+equalityexpr: 
+    (variableexpr EQUALS variableexpr) | 
+    (variableexpr NOT_EQUALS variableexpr);
+    
+variableexpr: (ID | INT | STRING | FLOAT);
 endscope: BLOCK_CLOSE;
 
 typeSpecifier:
@@ -40,9 +46,12 @@ INT: DIGIT+ ('.' DIGIT+)?;
 STRING: '"' (~('\n' | '"'))* '"';
 FLOAT: DIGIT+ ('.' DIGIT+);
 IF: 'brif';
-EQUALS: '==';
+NOT_EQUALS: 'broesn\'t brequal';
+EQUALS: 'brequals';
 AS: 'bras';
 IS: 'bris';
+AND: 'brand';
+OR: 'bror';
 ELSE: 'brelse';
 ID: [a-zA-Z_]+[a-zA-Z0-9_]*;
 NEXT_STATEMENT: '\n';

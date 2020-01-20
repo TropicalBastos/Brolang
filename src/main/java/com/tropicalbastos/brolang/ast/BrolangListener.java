@@ -38,16 +38,6 @@ public interface BrolangListener extends ParseTreeListener {
 	 */
 	void exitAssignStmt(BrolangParser.AssignStmtContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link BrolangParser#ifcondition}.
-	 * @param ctx the parse tree
-	 */
-	void enterIfcondition(BrolangParser.IfconditionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link BrolangParser#ifcondition}.
-	 * @param ctx the parse tree
-	 */
-	void exitIfcondition(BrolangParser.IfconditionContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link BrolangParser#elsecondition}.
 	 * @param ctx the parse tree
 	 */
@@ -68,6 +58,16 @@ public interface BrolangListener extends ParseTreeListener {
 	 */
 	void exitElseifcondition(BrolangParser.ElseifconditionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link BrolangParser#ifcondition}.
+	 * @param ctx the parse tree
+	 */
+	void enterIfcondition(BrolangParser.IfconditionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BrolangParser#ifcondition}.
+	 * @param ctx the parse tree
+	 */
+	void exitIfcondition(BrolangParser.IfconditionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link BrolangParser#printstmt}.
 	 * @param ctx the parse tree
 	 */
@@ -87,6 +87,26 @@ public interface BrolangListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitExpr(BrolangParser.ExprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BrolangParser#equalityexpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterEqualityexpr(BrolangParser.EqualityexprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BrolangParser#equalityexpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitEqualityexpr(BrolangParser.EqualityexprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BrolangParser#variableexpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterVariableexpr(BrolangParser.VariableexprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BrolangParser#variableexpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitVariableexpr(BrolangParser.VariableexprContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link BrolangParser#endscope}.
 	 * @param ctx the parse tree

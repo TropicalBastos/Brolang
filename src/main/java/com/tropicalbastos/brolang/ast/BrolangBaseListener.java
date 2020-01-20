@@ -52,18 +52,6 @@ public class BrolangBaseListener implements BrolangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIfcondition(BrolangParser.IfconditionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitIfcondition(BrolangParser.IfconditionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterElsecondition(BrolangParser.ElseconditionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -88,6 +76,18 @@ public class BrolangBaseListener implements BrolangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterIfcondition(BrolangParser.IfconditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIfcondition(BrolangParser.IfconditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterPrintstmt(BrolangParser.PrintstmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -107,6 +107,30 @@ public class BrolangBaseListener implements BrolangListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitExpr(BrolangParser.ExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterEqualityexpr(BrolangParser.EqualityexprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitEqualityexpr(BrolangParser.EqualityexprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVariableexpr(BrolangParser.VariableexprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVariableexpr(BrolangParser.VariableexprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -100,18 +100,6 @@ public class BrolangBaseListener implements BrolangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpr(BrolangParser.ExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitExpr(BrolangParser.ExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterEqualityexpr(BrolangParser.EqualityexprContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -124,13 +112,49 @@ public class BrolangBaseListener implements BrolangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVariableexpr(BrolangParser.VariableexprContext ctx) { }
+	@Override public void enterNotequalexpr(BrolangParser.NotequalexprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVariableexpr(BrolangParser.VariableexprContext ctx) { }
+	@Override public void exitNotequalexpr(BrolangParser.NotequalexprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterEqualsexpr(BrolangParser.EqualsexprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitEqualsexpr(BrolangParser.EqualsexprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNequalexpr(BrolangParser.NequalexprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNequalexpr(BrolangParser.NequalexprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterStartscope(BrolangParser.StartscopeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStartscope(BrolangParser.StartscopeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -143,6 +167,30 @@ public class BrolangBaseListener implements BrolangListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitEndscope(BrolangParser.EndscopeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExpr(BrolangParser.ExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExpr(BrolangParser.ExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVariableexpr(BrolangParser.VariableexprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVariableexpr(BrolangParser.VariableexprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

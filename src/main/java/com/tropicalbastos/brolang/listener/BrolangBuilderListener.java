@@ -46,7 +46,7 @@ public class BrolangBuilderListener extends BrolangBaseListener {
         int trueType = BrolangParser.STRING;
 
         switch (type) {
-            case "brint":
+            case "brinteger":
                 trueType = BrolangParser.INT;
                 output += "int ";
                 break;
@@ -61,7 +61,7 @@ public class BrolangBuilderListener extends BrolangBaseListener {
 
         String variableName = tree.get(1).getText();
 
-        List<BrolangScopedVar> l = declaredVars.get(currentScope);
+        List<BrolangScopedVar> l = declaredVars.getOrDefault(currentScope, new ArrayList<>());
         BrolangScopedVar scopedVar = new BrolangScopedVar();
         scopedVar.type = trueType;
         scopedVar.varName = variableName;
@@ -79,32 +79,41 @@ public class BrolangBuilderListener extends BrolangBaseListener {
 
     public void enterVariableexpr(BrolangParser.VariableexprContext ctx) {
         if (
-            brolangContext != BrolangContext.IF_CONTEXT &&
             brolangContext != BrolangContext.ASSIGNMENT_CONTEXT
         ) {
             output += ctx.children.get(0).getText();
         }
     }
 
-	// public void exitExpr(BrolangParser.ExprContext ctx){}
+    // public void exitExpr(BrolangParser.ExprContext ctx){}
+    
+    public void enterEqualsexpr(BrolangParser.EqualsexprContext ctx) {
+        output += " == ";
+    }
+
+    public void enterNequalexpr(BrolangParser.NequalexprContext ctx) {
+        output += " != ";
+    }
 
 	public void enterIfcondition(BrolangParser.IfconditionContext ctx){
         brolangContext = BrolangContext.IF_CONTEXT;
+        currentScope++;
         output += "if (";
-        List<ParseTree> tree = ctx.children;
-        for (int i = 1; i < tree.size(); i++) {
-            String tokenText = tree.get(i).getText();
-            if (tokenText.trim().charAt(0) == '{') {
-                output += ") {\n";
-            } else {
-                output += tokenText;
-            }
-        }
+    }
+
+    public void exitIfcondition(BrolangParser.IfconditionContext ctx){
+        output += ") {\n";
+    }
+
+    public void enterStartscope(BrolangParser.StartscopeContext ctx) {
+        currentScope++;
+        output += "{\n";
     }
 
     public void enterEndscope(BrolangParser.EndscopeContext ctx) {
         output += "}\n";
         brolangContext = BrolangContext.DEFAULT;
+        currentScope--;
     }
 
 	public void enterElsecondition(BrolangParser.ElseconditionContext ctx) {
@@ -123,15 +132,22 @@ public class BrolangBuilderListener extends BrolangBaseListener {
     
 	public void enterPrintstmt(BrolangParser.PrintstmtContext ctx){
         String varName = ctx.children.get(1).getText();
-        List<BrolangScopedVar> l = declaredVars.get(currentScope);
-        BrolangScopedVar var = BrolangScopedVar.getByVarName(l, varName);
+        BrolangScopedVar var = BrolangScopedVar.getByVarName(declaredVars, varName, currentScope);
+
+        if (var == null) {
+            System.err.println("Variable " + varName + " not declared");
+            System.exit(-1);
+        }
+
         int type = var.type;
+
         String formatSpec = "%s";
         if (type == BrolangParser.INT) {
             formatSpec = "%d";
         } else if (type == BrolangParser.FLOAT) {
             formatSpec = "%f";
         }
+
         output += "printf(\"" + formatSpec + "\", ";
     }
 

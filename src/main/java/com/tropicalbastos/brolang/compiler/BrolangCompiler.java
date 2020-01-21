@@ -18,7 +18,7 @@ public class BrolangCompiler {
     public void compile(String outFile) {
         this._tempCreate();
         this._compile(outFile);
-        this._clean();
+        // this._clean();
     }
 
     private void _tempCreate() {

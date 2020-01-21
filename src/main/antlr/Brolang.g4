@@ -10,24 +10,32 @@ stmt:
     | elsecondition
     | elseifcondition
     | endscope
+    | startscope
 ;
 
 assignStmt: typeSpecifier ID IS variableexpr NEXT_STATEMENT;
 elsecondition: ELSE;
 elseifcondition: ELSE ifcondition;
-ifcondition: IF variableexpr EQUALS variableexpr BLOCK_OPEN;
-printstmt: SAY variableexpr NEXT_STATEMENT;
-expr: variableexpr;
+ifcondition: IF (equalityexpr | notequalexpr | variableexpr) BLOCK_OPEN NEXT_STATEMENT?;
+printstmt: PRINT variableexpr NEXT_STATEMENT;
 
-equalityexpr: 
-    (variableexpr EQUALS variableexpr) | 
-    (variableexpr NOT_EQUALS variableexpr);
-    
-variableexpr: (ID | INT | STRING | FLOAT);
+equalityexpr: variableexpr equalsexpr variableexpr;
+notequalexpr: variableexpr nequalexpr variableexpr;
+
+equalsexpr: EQUALS;
+nequalexpr: NOT_EQUALS;
+
+startscope: BLOCK_OPEN;
 endscope: BLOCK_CLOSE;
 
+expr: 
+    variableexpr |
+    equalityexpr;
+
+variableexpr: (ID | INT | STRING | FLOAT);
+
 typeSpecifier:
-    'brint'
+    'brinteger'
     |   'bring'
     |   'broat'
 ;
@@ -39,9 +47,7 @@ fragment DIGIT: [0-9] ;
 
 BLOCK_OPEN: '{';
 BLOCK_CLOSE: '}';
-SAY: 'bray';
-SET: 'set';
-TO: 'to';
+PRINT: 'brint';
 INT: DIGIT+ ('.' DIGIT+)?;
 STRING: '"' (~('\n' | '"'))* '"';
 FLOAT: DIGIT+ ('.' DIGIT+);
@@ -55,4 +61,4 @@ OR: 'bror';
 ELSE: 'brelse';
 ID: [a-zA-Z_]+[a-zA-Z0-9_]*;
 NEXT_STATEMENT: '\n';
-WS: (' '|'\r'|'\t') -> channel(HIDDEN);
+WS: (' '|'\r'|'\t'|'\n') -> channel(HIDDEN);

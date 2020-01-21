@@ -78,16 +78,6 @@ public interface BrolangListener extends ParseTreeListener {
 	 */
 	void exitPrintstmt(BrolangParser.PrintstmtContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link BrolangParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterExpr(BrolangParser.ExprContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link BrolangParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitExpr(BrolangParser.ExprContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link BrolangParser#equalityexpr}.
 	 * @param ctx the parse tree
 	 */
@@ -98,15 +88,45 @@ public interface BrolangListener extends ParseTreeListener {
 	 */
 	void exitEqualityexpr(BrolangParser.EqualityexprContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link BrolangParser#variableexpr}.
+	 * Enter a parse tree produced by {@link BrolangParser#notequalexpr}.
 	 * @param ctx the parse tree
 	 */
-	void enterVariableexpr(BrolangParser.VariableexprContext ctx);
+	void enterNotequalexpr(BrolangParser.NotequalexprContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link BrolangParser#variableexpr}.
+	 * Exit a parse tree produced by {@link BrolangParser#notequalexpr}.
 	 * @param ctx the parse tree
 	 */
-	void exitVariableexpr(BrolangParser.VariableexprContext ctx);
+	void exitNotequalexpr(BrolangParser.NotequalexprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BrolangParser#equalsexpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterEqualsexpr(BrolangParser.EqualsexprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BrolangParser#equalsexpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitEqualsexpr(BrolangParser.EqualsexprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BrolangParser#nequalexpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterNequalexpr(BrolangParser.NequalexprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BrolangParser#nequalexpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitNequalexpr(BrolangParser.NequalexprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BrolangParser#startscope}.
+	 * @param ctx the parse tree
+	 */
+	void enterStartscope(BrolangParser.StartscopeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BrolangParser#startscope}.
+	 * @param ctx the parse tree
+	 */
+	void exitStartscope(BrolangParser.StartscopeContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link BrolangParser#endscope}.
 	 * @param ctx the parse tree
@@ -117,6 +137,26 @@ public interface BrolangListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitEndscope(BrolangParser.EndscopeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BrolangParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr(BrolangParser.ExprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BrolangParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr(BrolangParser.ExprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BrolangParser#variableexpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterVariableexpr(BrolangParser.VariableexprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BrolangParser#variableexpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitVariableexpr(BrolangParser.VariableexprContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link BrolangParser#typeSpecifier}.
 	 * @param ctx the parse tree

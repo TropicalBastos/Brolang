@@ -24,12 +24,10 @@ public class Main {
         String outFile = args[1];
         String sourceCode = "";
 
-        try (
-            FileInputStream fileStream = new FileInputStream(fileName);
-
+        try (FileInputStream fileStream = new FileInputStream(fileName)) {
             while (fileStream.available() > 0) {
                 sourceCode += (char) fileStream.read();
-            )
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.exit(-1);

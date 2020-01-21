@@ -22,11 +22,9 @@ public class BrolangCompiler {
     }
 
     private void _tempCreate() {
-        try {
-            FileOutputStream outputStream = new FileOutputStream(SOURCE_CODE_IDENTIFIER);
+        try (FileOutputStream outputStream = new FileOutputStream(SOURCE_CODE_IDENTIFIER)) {
             byte[] bytesToWrite = source.getBytes("UTF-8");
-            outputStream.write(bytesToWrite);
-            outputStream.close();
+            outputStream.write(bytesToWrite); 
         } catch (IOException e) {
             System.out.println(e.getMessage());
             this._clean();

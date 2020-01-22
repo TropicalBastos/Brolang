@@ -28,11 +28,9 @@ public class BrolangCompiler {
     }
 
     private void _tempCreate() {
-        try {
-            FileOutputStream outputStream = new FileOutputStream(SOURCE_CODE_IDENTIFIER);
+        try (FileOutputStream outputStream = new FileOutputStream(SOURCE_CODE_IDENTIFIER)) {
             byte[] bytesToWrite = source.getBytes("UTF-8");
             outputStream.write(bytesToWrite);
-            outputStream.close();
         } catch (IOException e) {
             System.out.println(e.getMessage());
             this._clean();
@@ -46,8 +44,7 @@ public class BrolangCompiler {
     }
 
     private void _compile(String outFile) {
-        try
-        { 
+        try { 
             // Command to create an external process 
             String compileCommand = "gcc -o " + outFile + " " + SOURCE_CODE_IDENTIFIER;
   
@@ -55,10 +52,7 @@ public class BrolangCompiler {
             Runtime run  = Runtime.getRuntime(); 
             Process proc = run.exec(compileCommand); 
             proc.waitFor();
-        } 
-  
-        catch (Exception e) 
-        { 
+        } catch (Exception e) { 
             e.printStackTrace(); 
         }
     }

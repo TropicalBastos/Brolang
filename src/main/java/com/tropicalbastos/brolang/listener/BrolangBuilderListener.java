@@ -66,6 +66,7 @@ public class BrolangBuilderListener extends BrolangBaseListener {
         scopedVar.type = trueType;
         scopedVar.varName = variableName;
         l.add(scopedVar);
+        declaredVars.put(currentScope, l);
 
         output += variableName; //identifier
         output += " = ";

@@ -3,6 +3,7 @@ package com.tropicalbastos.brolang.compiler;
 import java.io.IOException;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.Map;
 
 public class BrolangCompiler {
 
@@ -18,7 +19,12 @@ public class BrolangCompiler {
     public void compile(String outFile) {
         this._tempCreate();
         this._compile(outFile);
-        // this._clean();
+
+        Map<String, String> env = System.getenv();
+        String debug = env.getOrDefault("DEBUG", null);
+        
+        if (debug == null)
+            this._clean();
     }
 
     private void _tempCreate() {

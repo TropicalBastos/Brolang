@@ -148,7 +148,7 @@ public class BrolangBuilderListener extends BrolangBaseListener {
             formatSpec = "%f";
         }
 
-        output += "printf(\"" + formatSpec + "\", ";
+        output += "printf(\"" + formatSpec + "\\n\", ";
     }
 
 	public void exitPrintstmt(BrolangParser.PrintstmtContext ctx){

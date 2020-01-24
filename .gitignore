@@ -1,7 +1,10 @@
+/.vscode
 /build/classes
 /build/generated
 /build/libs
 /build/tmp
+/build/reports
+/build/test-results
 /bin
 /.gradle
 /.settings

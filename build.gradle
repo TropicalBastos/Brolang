@@ -5,9 +5,15 @@ plugins {
 
 sourceSets {
     main {
-        java {
-            srcDir './'
-        }
+      java {
+          srcDir 'src/main/java'
+      }
+    }
+
+    test {
+      java {
+        srcDir 'test/java'
+      }
     }
 }
 
@@ -15,9 +21,17 @@ repositories {
     mavenCentral()
 }
 
+test {
+    useJUnit()
+    maxHeapSize = '1G'
+}
+
 dependencies {
     antlr "org.antlr:antlr4:4.7.1"
     compile "org.antlr:antlr4:4.7.1"
+
+    testCompile 'junit:junit:4.12'
+    compile 'junit:junit:4.12'
 }
 
 generateGrammarSource {

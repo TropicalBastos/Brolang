@@ -19,10 +19,17 @@ public class AssignmentTests extends BaseTest {
         String code = "brinteger flag bris 5";
         transpile(code);
         String result = listener.getOutput();
-        Assert.assertEquals(
-            "#include <stdio.h>\nint main (int argc, char** argv) {\nint flag = 5;\n}\n",
-            result
-        );
+        String expected = TRANSPILE_TEMPLATE.replace("%(SOURCE_CODE)", "int flag = 5;\n");
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void testNestedAssignment() {
+        String code = "brif 4 brequals 4 {\nbrinteger flag bris 5\n}";
+        transpile(code);
+        String result = listener.getOutput();
+        String expected = TRANSPILE_TEMPLATE.replace("%(SOURCE_CODE)", "if (4 == 4) {\nint flag = 5;\n}\n");
+        Assert.assertEquals(expected, result);
     }
 
 }

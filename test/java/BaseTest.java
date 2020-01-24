@@ -16,6 +16,8 @@ public class BaseTest {
 
     BrolangBuilderListener listener;
 
+    public final String TRANSPILE_TEMPLATE = "#include <stdio.h>\nint main (int argc, char** argv) {\n%(SOURCE_CODE)}\n";
+
     protected void transpile(String sourceCode){
         CharStream input = CharStreams.fromString(sourceCode);
         BrolangLexer lexer = new BrolangLexer(input);

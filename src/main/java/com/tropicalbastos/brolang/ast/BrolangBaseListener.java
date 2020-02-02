@@ -100,6 +100,42 @@ public class BrolangBaseListener implements BrolangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterBoolexpr(BrolangParser.BoolexprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBoolexpr(BrolangParser.BoolexprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAndexpr(BrolangParser.AndexprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAndexpr(BrolangParser.AndexprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOrexpr(BrolangParser.OrexprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOrexpr(BrolangParser.OrexprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterEqualityexpr(BrolangParser.EqualityexprContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -119,6 +155,30 @@ public class BrolangBaseListener implements BrolangListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitNotequalexpr(BrolangParser.NotequalexprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAndterm(BrolangParser.AndtermContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAndterm(BrolangParser.AndtermContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOrterm(BrolangParser.OrtermContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOrterm(BrolangParser.OrtermContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

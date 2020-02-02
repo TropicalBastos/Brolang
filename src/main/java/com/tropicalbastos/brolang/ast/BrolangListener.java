@@ -78,6 +78,36 @@ public interface BrolangListener extends ParseTreeListener {
 	 */
 	void exitPrintstmt(BrolangParser.PrintstmtContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link BrolangParser#boolexpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterBoolexpr(BrolangParser.BoolexprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BrolangParser#boolexpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitBoolexpr(BrolangParser.BoolexprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BrolangParser#andexpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterAndexpr(BrolangParser.AndexprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BrolangParser#andexpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitAndexpr(BrolangParser.AndexprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BrolangParser#orexpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterOrexpr(BrolangParser.OrexprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BrolangParser#orexpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitOrexpr(BrolangParser.OrexprContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link BrolangParser#equalityexpr}.
 	 * @param ctx the parse tree
 	 */
@@ -97,6 +127,26 @@ public interface BrolangListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitNotequalexpr(BrolangParser.NotequalexprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BrolangParser#andterm}.
+	 * @param ctx the parse tree
+	 */
+	void enterAndterm(BrolangParser.AndtermContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BrolangParser#andterm}.
+	 * @param ctx the parse tree
+	 */
+	void exitAndterm(BrolangParser.AndtermContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BrolangParser#orterm}.
+	 * @param ctx the parse tree
+	 */
+	void enterOrterm(BrolangParser.OrtermContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BrolangParser#orterm}.
+	 * @param ctx the parse tree
+	 */
+	void exitOrterm(BrolangParser.OrtermContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link BrolangParser#equalsexpr}.
 	 * @param ctx the parse tree

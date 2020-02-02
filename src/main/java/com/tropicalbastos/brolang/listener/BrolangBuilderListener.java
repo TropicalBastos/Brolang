@@ -96,6 +96,14 @@ public class BrolangBuilderListener extends BrolangBaseListener {
         output += " != ";
     }
 
+    public void enterAndterm(BrolangParser.AndtermContext ctx) {
+        output += " && ";
+    }
+
+    public void enterOrterm(BrolangParser.OrtermContext ctx) {
+        output += " || ";
+    }
+
 	public void enterIfcondition(BrolangParser.IfconditionContext ctx){
         brolangContext = BrolangContext.IF_CONTEXT;
         currentScope++;

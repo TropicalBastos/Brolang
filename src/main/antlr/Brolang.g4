@@ -16,12 +16,18 @@ stmt:
 assignStmt: typeSpecifier ID IS variableexpr NEXT_STATEMENT;
 elsecondition: ELSE;
 elseifcondition: ELSE ifcondition;
-ifcondition: IF (equalityexpr | notequalexpr | variableexpr) BLOCK_OPEN NEXT_STATEMENT?;
+ifcondition: IF (equalityexpr | notequalexpr | variableexpr | boolexpr) BLOCK_OPEN NEXT_STATEMENT?;
 printstmt: PRINT variableexpr NEXT_STATEMENT;
+
+boolexpr: (andexpr | orexpr)+;
+andexpr: expr andterm expr;
+orexpr: expr orterm expr;
 
 equalityexpr: variableexpr equalsexpr variableexpr;
 notequalexpr: variableexpr nequalexpr variableexpr;
 
+andterm: AND;
+orterm: OR;
 equalsexpr: EQUALS;
 nequalexpr: NOT_EQUALS;
 
@@ -30,7 +36,8 @@ endscope: BLOCK_CLOSE;
 
 expr: 
     variableexpr |
-    equalityexpr;
+    equalityexpr |
+    notequalexpr;
 
 variableexpr: (ID | INT | STRING | FLOAT);
 
